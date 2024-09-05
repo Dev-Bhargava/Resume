@@ -14682,10 +14682,10 @@ div#featured-project-carousel {
 
 @media only screen and (max-width: 767px) {
     .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo{
-        left: 0;
+        right: 20px;
     }
     .personal-experience-inner .experience-list .resume-single-list .inner .heading .title{
-        margin-top: 65px;
+        margin-top: 15px;
     }
     .personal-experience-inner .experience-list .resume-single-list .inner .heading {
         display: block;
@@ -14693,13 +14693,13 @@ div#featured-project-carousel {
 }
 
 .personal-experience-inner .experience-list .resume-single-list .inner .heading .title {
-    margin-bottom: 15px;
+    margin-bottom: 65px;
 }
 
 .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo {
     max-width: 90px;
     position: absolute;
-    right: 20px;
+    left: 0px;
     top: 20px;
 }
 
