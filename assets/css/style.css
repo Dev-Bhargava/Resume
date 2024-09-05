@@ -14681,25 +14681,19 @@ div#featured-project-carousel {
 }
 
 @media only screen and (max-width: 767px) {
-    .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo{
-        right: 20px;
-    }
-    .personal-experience-inner .experience-list .resume-single-list .inner .heading .title{
-        margin-top: 15px;
-    }
     .personal-experience-inner .experience-list .resume-single-list .inner .heading {
         display: block;
     }
 }
 
 .personal-experience-inner .experience-list .resume-single-list .inner .heading .title {
-    margin-bottom: 65px;
+    margin-bottom: 15px;
 }
 
 .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo {
     max-width: 90px;
     position: absolute;
-    left: 0px;
+    right: 20px;
     top: 20px;
 }
 
