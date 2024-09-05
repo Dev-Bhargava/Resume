@@ -14519,6 +14519,12 @@ div#featured-project-carousel {
     }
 }
 
+@media only screen and (max-width: 479px) {
+    .rn-nav-list .nav-item .nav-link{
+        font-size: 14px;
+    }
+}
+
 .rn-nav-list .nav-item .nav-link:hover,
 .rn-nav-list .nav-item .nav-link.active {
     color: #0052D4;
