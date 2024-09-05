@@ -14798,7 +14798,9 @@ div#featured-project-carousel {
 @media only screen and (max-width: 767px) {
     .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo {
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        margin-left: 20px;
+        top: 0;
     }
     .experience-style-two {
         display: block;
