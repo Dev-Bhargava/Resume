@@ -14681,6 +14681,12 @@ div#featured-project-carousel {
 }
 
 @media only screen and (max-width: 767px) {
+    .personal-experience-inner .experience-list .resume-single-list .inner .resume-logo{
+        left: 0;
+    }
+    .personal-experience-inner .experience-list .resume-single-list .inner .heading .title{
+        margin-top: 65px;
+    }
     .personal-experience-inner .experience-list .resume-single-list .inner .heading {
         display: block;
     }
