@@ -14469,6 +14469,9 @@ div#featured-project-carousel {
         flex-basis: 50%;
         flex-grow: 1;
     }
+    #download-cv{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 575px) {
