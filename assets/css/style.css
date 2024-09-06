@@ -20872,8 +20872,8 @@ body.white-version .rn-btn-ulderline {
   .select_wrap .select_ul{
     position: absolute;
     top: 55px;
-    left: 0;
-    width: 100%;
+    right: 0;
+    left: auto;
     background: #fff;
     border-radius: 5px;
     display: none;
