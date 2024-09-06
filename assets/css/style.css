@@ -19700,6 +19700,21 @@ body.white-version .rn-btn-ulderline {
     background: linear-gradient(145deg, #0044af, #6984f9);
 }
 
+.white-version .rn-header .header-right a.rn-btn span{
+    display: flex;
+    gap: 10px;
+}
+.white-version .rn-header .header-right a.rn-btn svg{
+    width: 20px;    
+}
+
+.white-version .rn-header .header-right a.rn-btn svg path:first-of-type{
+    fill : #ffffff;
+}
+.white-version .rn-header .header-right a.rn-btn svg path:first-of-type{
+    fill: #4ec34e;
+}
+
 .white-version .rn-header .header-right a:hover {
     color: var(--color-white);
 }
