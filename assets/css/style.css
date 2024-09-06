@@ -20872,11 +20872,13 @@ body.white-version .rn-btn-ulderline {
     background: #fff;
     border-radius: 5px;
     display: none;
+    padding-left: 0;
   }
   
   .select_wrap .select_ul li{
     padding: 10px 20px;
     cursor: pointer;
+    list-style: none;
   }
   
   .select_wrap .select_ul li:first-child:hover{
