@@ -19711,7 +19711,7 @@ body.white-version .rn-btn-ulderline {
 .white-version .rn-header .header-right a.rn-btn svg path:first-of-type{
     fill : #ffffff;
 }
-.white-version .rn-header .header-right a.rn-btn svg path:first-of-type{
+.white-version .rn-header .header-right a.rn-btn svg path:nth-of-type(2){
     fill: #4ec34e;
 }
 
