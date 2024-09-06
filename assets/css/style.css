@@ -12760,7 +12760,7 @@ figcaption {
 }
 
 .slide .skill-share-inner .skill-share li {
-    margin: 10px;
+    margin: 10px 12px;
     line-height: 55px;
     display: inline-block;
     width: 60px;
