@@ -14557,6 +14557,7 @@ div#featured-project-carousel {
     font-size: 36px;
     font-weight: 700;
     line-height: 62px;
+    margin-bottom: 0;
     color: var(--color-lightn);
 }
 
