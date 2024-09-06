@@ -15798,7 +15798,7 @@ div#featured-project-carousel {
 
 @media only screen and (max-width: 767px) {
     .client-card .main-content .thumbnail.cococart a img {
-        max-height: 70px;
+        min-height: 70px;
     }
 }
 
