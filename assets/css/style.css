@@ -20846,10 +20846,12 @@ body.white-version .rn-btn-ulderline {
     border-radius: 5px;
     position: relative;
     cursor: pointer;
+    padding-left: 0;
   }
   
   .select_wrap .default_option li{
       padding: 10px 20px;
+      list-style: none;
   }
   
   .select_wrap .default_option:before{
