@@ -20835,10 +20835,12 @@ body.white-version .rn-btn-ulderline {
 }
 
 .select_wrap{
-    width: 225px;
-    margin: 15px auto;
-    position: relative;
+    width: 75px;
+    margin: 0;
+    position: absolute;
     user-select: none;
+    top: 0;
+    right: 0;
   }
   
   .select_wrap .default_option{
@@ -20847,6 +20849,7 @@ body.white-version .rn-btn-ulderline {
     position: relative;
     cursor: pointer;
     padding-left: 0;
+    margin: 0;
   }
   
   .select_wrap .default_option li{
