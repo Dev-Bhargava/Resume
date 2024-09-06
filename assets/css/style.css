@@ -14729,8 +14729,8 @@ div#featured-project-carousel {
 
 @media only screen and (max-width: 479px) {
     .personal-experience-inner .experience-list .resume-single-list .inner .heading .title h4 {
-        font-size: 21px;
-        line-height: 34px;
+        font-size: 18px;
+        line-height: 24px;
     }
 }
 
@@ -14763,6 +14763,13 @@ div#featured-project-carousel {
     line-height: 28px;
     color: var(--color-body);
     transition: var(--transition);
+}
+
+@media only screen and (max-width: 479px) {
+    .personal-experience-inner .experience-list .resume-single-list .inner p {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }
 
 .personal-experience-inner .experience-list .resume-single-list .inner.psudo-after-none::after {
