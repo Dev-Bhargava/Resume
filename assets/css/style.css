@@ -20934,3 +20934,98 @@ body.white-version .rn-btn-ulderline {
     top: 25px;
     transform: rotate(-225deg);
   }
+
+  .flag-icon{
+    -webkit-background-size: contain;
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat
+    position: relative;
+    display: inline-block;
+    width: 1.3333333333em;
+    line-height: 1em
+}
+
+.flag-icon.flag-icon-us {
+    background-image: url(/cdn/shop/files/us.svg?v=1607607178)
+}
+
+.flag-icon.flag-icon-el {
+    background-image: url(/cdn/shop/files/gr.svg?v=1607607220)
+}
+
+.flag-icon.flag-icon-el {
+    background-image: url(/cdn/shop/files/gr.svg?v=1607607220)
+}
+
+.flag-icon.flag-icon-can {
+    background-image: url(/cdn/shop/files/ca.svg?v=1607607239)
+}
+
+.flag-icon.flag-icon-can {
+    background-image: url(/cdn/shop/files/ca.svg?v=1607607239)
+}
+
+.flag-icon.flag-icon-da {
+    background-image: url(/cdn/shop/files/dk.svg?v=1607607260)
+}
+
+.flag-icon.flag-icon-da {
+    background-image: url(/cdn/shop/files/dk.svg?v=1607607260)
+}
+
+.flag-icon.flag-icon-sv {
+    background-image: url(/cdn/shop/files/se.svg?v=1607607295)
+}
+
+.flag-icon.flag-icon-sv {
+    background-image: url(/cdn/shop/files/se.svg?v=1607607295)
+}
+
+.flag-icon.flag-icon-nl {
+    background-image: url(/cdn/shop/files/nl.svg?v=1607607418)
+}
+
+.flag-icon.flag-icon-it {
+    background-image: url(/cdn/shop/files/it.svg?v=1607607443)
+}
+
+.flag-icon.flag-icon-gb {
+    background-image: url(/cdn/shop/files/gb.svg?v=1607607474)
+}
+
+.flag-icon.flag-icon-fr {
+    background-image: url(/cdn/shop/files/fr.svg?v=1607607497)
+}
+
+.flag-icon.flag-icon-es {
+    background-image: url(/cdn/shop/files/es.svg?v=1607607520)
+}
+
+.flag-icon.flag-icon-el {
+    background-image: url(/cdn/shop/files/gr_a8dbb7c9-d346-4d9f-8a27-8f09624f13a1.svg?v=1607607543)
+}
+
+.flag-icon.flag-icon-de {
+    background-image: url(/cdn/shop/files/de.svg?v=1607607569)
+}
+
+.flag-icon.flag-icon-da {
+    background-image: url(/cdn/shop/files/dk_ee52fd24-060a-4a91-ab33-01b8589c968c.svg?v=1607607592)
+}
+
+.flag-icon.flag-icon-can {
+    background-image: url(/cdn/shop/files/ca_543d7443-4404-4819-8323-0eff72a48e33.svg?v=1607607610)
+}
+
+.flag-icon.flag-icon-au {
+    background-image: url(/cdn/shop/files/au.svg?v=1607607634)
+}
+
+.flag-icon.flag-icon-in {
+    background-image: url(/cdn/shop/files/in.svg?v=1607607651)
+}
+
+.flag-icon.flag-icon-pt {
+    background-image: url(/cdn/shop/files/pt.svg?v=1607607670)
+}
