@@ -20461,8 +20461,11 @@ body.white-version .rn-btn-ulderline {
     box-shadow: var(--shadow-white-3);
 }
 
+.white-version .popup-mobile-menu .inner .content .social-share-style-1 .social-share li a {
+    background: linear-gradient(145deg, #0052D4, #4364F7);
+}
 .white-version .popup-mobile-menu .inner .content .social-share-style-1 .social-share li a svg {
-    color: var(--color-primary);
+    color: #ffffff;
 }
 
 .white-version a.video-play-button span {
