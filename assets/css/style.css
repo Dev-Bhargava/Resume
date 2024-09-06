@@ -15796,6 +15796,12 @@ div#featured-project-carousel {
     max-height: 45px;
 }
 
+@media only screen and (max-width: 767px) {
+    .client-card .main-content .thumbnail.cococart a img {
+        max-height: 70px;
+    }
+}
+
 .client-card .main-content .seperator {
     position: relative;
     z-index: 2;
