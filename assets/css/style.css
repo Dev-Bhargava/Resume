@@ -7238,7 +7238,8 @@ textarea:-ms-input-placeholder {
     stroke-width: 2;
     position: relative;
     z-index: 2;
-    width: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 ul.slick-dots {
