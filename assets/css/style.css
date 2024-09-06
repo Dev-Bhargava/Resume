@@ -15794,18 +15794,6 @@ div#featured-project-carousel {
 
 .client-card .main-content .thumbnail a img {
     max-height: 45px;
-    filter: grayscale(1);
-    opacity: .6;
-}
-
-.client-card .main-content:hover .thumbnail a img {
-    filter: none;
-    opacity: 1;
-}
-
-.client-card .main-content:hover .inner .mnc {
-    background: linear-gradient(145deg, #0052D4, #4364F7);
-    color: #ffffff;
 }
 
 .client-card .main-content .seperator {
