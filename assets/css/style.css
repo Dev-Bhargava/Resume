@@ -12482,7 +12482,7 @@ figcaption {
 
 @media only screen and (max-width: 575px) {
     .slide {
-        padding-bottom: 100px;
+        padding-bottom: 50px;
     }
 }
 
@@ -12776,7 +12776,7 @@ figcaption {
 }
 
 .slide .skill-share-inner .skill-share li img {
-    max-height: 27px;
+    max-height: 23px;
     width: auto;
 }
 
