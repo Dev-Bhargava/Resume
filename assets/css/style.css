@@ -14552,13 +14552,16 @@ div#featured-project-carousel {
     letter-spacing: 2px;
     font-weight: 500;
 }
-
 .personal-experience-inner .content .maintitle {
     font-size: 36px;
     font-weight: 700;
     line-height: 62px;
-    margin-bottom: 0;
     color: var(--color-lightn);
+}
+
+#expertise .personal-experience-inner .content .maintitle{
+    margin-bottom: 0;
+    line-height: 42px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
