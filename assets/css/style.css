@@ -20917,7 +20917,11 @@ body.white-version .rn-btn-ulderline {
     .select_wrap .option .icon{
         font-size: 14px;    
     }
-  
+
+    .select_wrap .option .icon p{
+        font-size: 12px;
+    }
+    
   .select_wrap.active .select_ul{
     display: block;
   }
