@@ -20872,13 +20872,14 @@ body.white-version .rn-btn-ulderline {
   
   .select_wrap .select_ul{
     position: absolute;
-    top: 55px;
+    top: 40px;
     right: 0;
     left: auto;
     background: #fff;
     border-radius: 5px;
     display: none;
     padding-left: 0;
+    margin: 0;
   }
   
   .select_wrap .select_ul li{
