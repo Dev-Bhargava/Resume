@@ -20855,6 +20855,7 @@ body.white-version .rn-btn-ulderline {
   .select_wrap .default_option li{
       padding: 10px 20px;
       list-style: none;
+      margin: 0;
   }
   
   .select_wrap .default_option:before{
