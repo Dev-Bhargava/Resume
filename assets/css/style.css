@@ -20863,8 +20863,8 @@ body.white-version .rn-btn-ulderline {
       position: absolute;
       top: 18px;
       right: 18px;
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border: 2px solid;
       border-color: transparent transparent #555555 #555555;
       transform: rotate(-45deg);
@@ -20929,7 +20929,7 @@ body.white-version .rn-btn-ulderline {
   }
   
   .select_wrap.active .default_option:before{
-    top: 25px;
+    top: 20px;
     transform: rotate(-225deg);
   }
 
