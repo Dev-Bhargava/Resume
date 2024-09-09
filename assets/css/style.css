@@ -15747,8 +15747,6 @@ div#featured-project-carousel {
     background: var(--background-color-1);
     box-shadow: var(--shadow-1);
     border-radius: 10px;
-    position: relative;
-    z-index: 2;
 }
 
 .client-card .main-content .inner::after {
@@ -20837,10 +20835,12 @@ body.white-version .rn-btn-ulderline {
 .select_wrap{
     width: 75px;
     margin: 0;
-    position: absolute;
+    position: relative;
     user-select: none;
     top: 0;
     right: 0;
+    left: auto;
+    float: right;
   }
   
   .select_wrap .default_option{
@@ -20926,7 +20926,7 @@ body.white-version .rn-btn-ulderline {
     
   .select_wrap.active .select_ul{
     display: block;
-    z-index: 99999999;
+    z-index: 9;
   }
   
   .select_wrap.active .default_option:before{
