@@ -20883,7 +20883,7 @@ body.white-version .rn-btn-ulderline {
   }
   
   .select_wrap .select_ul li{
-    padding: 10px 20px;
+    padding: 8px 10px;
     cursor: pointer;
     list-style: none;
     margin: 0;
@@ -20927,6 +20927,7 @@ body.white-version .rn-btn-ulderline {
   .select_wrap.active .select_ul{
     display: block;
     z-index: 9;
+    min-width: 150px;
   }
   
   .select_wrap.active .default_option:before{
