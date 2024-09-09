@@ -439,7 +439,7 @@
 
 // Multilingual Select Box
 $(".default_option").click(function(){
-    $('body').find('.select_wrap.active').removeClass('active');
+    $('.select_wrap.active').removeClass('active');
     $(this).parent().toggleClass("active");
 })
 
