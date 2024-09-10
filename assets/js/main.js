@@ -442,7 +442,7 @@ $(".default_option").click(function(){
     if(!$(this)){
         $('body').find('.select_wrap.active').removeClass('active');
     }
-    $(this).closest('.select_wrap').toggleClass('active');
+    $(this).parent().toggleClass("active");
 })
 
 $(".select_ul li").click(function(){
