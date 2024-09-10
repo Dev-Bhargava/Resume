@@ -438,8 +438,8 @@
 })(jQuery, window)
 
 // Multilingual Select Box
-$(".default_option").click(function(){
-    if(!$(this)){
+$(".default_option").not(".active").click(function() {
+    if (!$(this).parent().hasClass("active")) {
         $('body').find('.select_wrap.active').removeClass('active');
     }
     $(this).parent().toggleClass("active");
@@ -447,6 +447,8 @@ $(".default_option").click(function(){
 
 $(".select_ul li").click(function(){
     var currentele = $(this).html();
-    $(".default_option li").html(currentele);
+    let currentUrl = $(this).find('p').data('value');
+    $(this).parents(".inner").find('a').attr('href',currentUrl);
+    $(this).parents(".select_wrap").find(".default_option li").html(currentele);
     $(this).parents(".select_wrap").removeClass("active");
 })

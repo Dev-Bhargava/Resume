@@ -20260,6 +20260,7 @@ body.white-version .rn-btn-ulderline {
 .white-version .rn-client-area .client-card .inner {
     background: var(--gradient-box-w);
     box-shadow: var(--shadow-white-3);
+    position: relative;
 }
 
 .white-version .rn-client-area .client-card .inner::after {
@@ -20835,7 +20836,7 @@ body.white-version .rn-btn-ulderline {
 .select_wrap{
     width: 75px;
     margin: 0;
-    position: relative;
+    position: absolute;
     user-select: none;
     top: 0;
     right: 0;
@@ -20850,6 +20851,10 @@ body.white-version .rn-btn-ulderline {
     cursor: pointer;
     padding-left: 0;
     margin: 0;
+  }
+
+  .select_wrap .default_option p{
+    display: none;
   }
   
   .select_wrap .default_option li{
