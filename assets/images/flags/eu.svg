@@ -1,0 +1,30 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="cn-market-icon" viewBox="0 0 512 512" width="512"  height="512" ><defs><symbol id="country-flag-ir" viewBox="0 0 512 512"><g fill-rule="evenodd" stroke-width="1.33333px">
+    <defs>
+      <g id="d">
+        <g id="b">
+          <path id="a" d="M0-1l-.3 1 .5.1z"></path>
+          <use transform="scale(-1 1)" xlink:href="#a"></use>
+        </g>
+        <g id="c">
+          <use transform="rotate(72)" xlink:href="#b"></use>
+          <use transform="rotate(144)" xlink:href="#b"></use>
+        </g>
+        <use transform="scale(-1 1)" xlink:href="#c"></use>
+      </g>
+    </defs>
+    <path fill="#003399" d="M0 0h512v512H0z" stroke-width="1.33333px"></path>
+    <g fill="#FFCC00" transform="translate(256 258.4) scale(25.28395)" stroke-width="1.33333px">
+      <use width="100%" height="100%" y="-6" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+      <use width="100%" height="100%" y="6" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+      <g id="e" fill="#FFCC00" stroke-width="1.33333px">
+        <use width="100%" height="100%" x="-6" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+        <use width="100%" height="100%" transform="rotate(-144 -2.3 -2.1)" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+        <use width="100%" height="100%" transform="rotate(144 -2.1 -2.3)" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+        <use width="100%" height="100%" transform="rotate(72 -4.7 -2)" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+        <use width="100%" height="100%" transform="rotate(72 -5 .5)" xlink:href="#d" fill="#FFCC00" stroke-width="1.33333px"></use>
+      </g>
+      <use width="100%" height="100%" transform="scale(-1 1)" xlink:href="#e" fill="#FFCC00" stroke-width="1.33333px"></use>
+    </g>
+  </g></symbol></defs>
+            <use xlink:href="#country-flag-ir"></use>
+          </svg>
