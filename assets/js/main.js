@@ -439,12 +439,14 @@
 
 // Multilingual Select Box
 $(".default_option").click(function(){
-    // $('.select_wrap.active').removeClass('active');
-    $(this).parent().toggleClass("active");
+    if(!$(this)){
+        $('body').find('.select_wrap.active').removeClass('active');
+    }
+    $(this).closest('.select_wrap').toggleClass('active');
 })
 
-// $(".select_ul li").click(function(){
-//     var currentele = $(this).html();
-//     $(".default_option li").html(currentele);
-//     $(this).parents(".select_wrap").removeClass("active");
-// })
+$(".select_ul li").click(function(){
+    var currentele = $(this).html();
+    $(".default_option li").html(currentele);
+    $(this).parents(".select_wrap").removeClass("active");
+})
