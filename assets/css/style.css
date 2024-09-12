@@ -7155,6 +7155,10 @@ textarea:-ms-input-placeholder {
     flex-wrap: wrap;
 }
 
+.social-share-style-1 .social-share img{
+    max-width: 30px;
+}
+
 .social-share-style-1 .social-share li {
     margin: 0 25px 25px 0;
 }
