@@ -7503,8 +7503,6 @@ Copyright (c) 2015 Daniel Eden
     animation-name: flash;
 }
 
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-
 @-webkit-keyframes pulse {
     from {
         -webkit-transform: scale3d(1, 1, 1);
@@ -7773,8 +7771,6 @@ Copyright (c) 2015 Daniel Eden
     -webkit-animation-name: tada;
     animation-name: tada;
 }
-
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 
 @-webkit-keyframes wobble {
     from {
@@ -9794,8 +9790,6 @@ Copyright (c) 2015 Daniel Eden
     animation-name: hinge;
 }
 
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
-
 @-webkit-keyframes rollIn {
     from {
         opacity: 0;
@@ -9826,8 +9820,6 @@ Copyright (c) 2015 Daniel Eden
     -webkit-animation-name: rollIn;
     animation-name: rollIn;
 }
-
-/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
 
 @-webkit-keyframes rollOut {
     from {

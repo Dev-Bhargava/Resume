@@ -349,7 +349,7 @@
             $('#play-video, .play-video').on('click', function(e) {
                 e.preventDefault();
                 $('#video-overlay, .video-overlay').addClass('open');
-                $("#video-overlay, .video-overlay").append('<iframe width="80%" height="80%" src="https://www.youtube.com/embed/7e90gBu4pas" frameborder="0" allowfullscreen></iframe>');
+                $("#video-overlay, .video-overlay").append('<iframe width="80%" height="80%" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>');
             });
 
             $('.video-overlay, .video-overlay-close').on('click', function(e) {
