@@ -14464,7 +14464,7 @@ div#featured-project-carousel {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .rn-nav-list .nav-item {
-        flex-basis: 33%;
+        flex-basis: 33%; 
     }
 }
 
