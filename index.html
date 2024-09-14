@@ -55,7 +55,7 @@
                     </nav>
                     <!-- Start Header Right  -->
                     <div class="header-right">
-                        <a class="rn-btn" href="/assets/files/Ayush_Bhargava_CV.pdf" download>
+                        <a class="rn-btn" data-bs-toggle="modal" data-bs-target="#downloadResume">
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
                                     text-rendering="geometricPrecision" image-rendering="optimizeQuality"
@@ -169,7 +169,7 @@
                         <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30">
                             <div class="content">
                                 <div class="inner">
-                                    <span class="subtitle">Welcome to my world</span>
+                                    <span class="subtitle">Welcome to My Development Workshop</span>
                                     <h1 class="title">Hi, I’m <span>Ayush Bhargava</span><br>
                                         <span class="header-caption" id="page-top">
                                             <!-- type headline start-->
@@ -255,8 +255,7 @@
                                     Skills</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="download-cv" href="/assets/files/Ayush_Bhargava_CV.pdf"
-                                    download>Download Resume</a>
+                                <a class="nav-link" id="download-cv" data-bs-toggle="modal" data-bs-target="#downloadResume">Download Resume</a>
                             </li>
                         </ul>
 
@@ -1725,8 +1724,7 @@
                         <div class="contact-form-wrapper">
                             <div class="introduce">
 
-                                <form class="rnt-contact-form rwt-dynamic-form row" id="contact-form" method="POST"
-                                    action="mail.php">
+                                <form class="rnt-contact-form rwt-dynamic-form row" id="contact-form">
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
@@ -1980,6 +1978,58 @@
             </div>
         </div>
         <!-- End Modal Blog area -->
+
+        <!-- Modal Resume Body area Start -->
+        <div class="modal fade" id="downloadResume" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-news" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i data-feather="x"></i></span>
+                        </button>
+                    </div>
+
+                    <!-- End of .modal-header -->
+
+                    <div class="modal-body">
+                        <div class="news-details text-center">
+                            <h2 class="title">Download My Resume</h2>
+                            <p>Thank you for your interest in my work! To access my resume and see how my skills and experiences align with your needs, please fill out the form below. I’ll send the resume directly to your inbox once you’ve completed the form.</p>
+
+                            <div class="comment-inner mb--40">
+                                <form id="resume-form">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="rnform-group"><input type="text" id="hrName" placeholder="Full Name">
+                                            </div>
+                                            <div class="rnform-group"><input type="email" id="hrEmail" placeholder="Email">
+                                            </div>
+                                            <div class="rnform-group"><input type="text" id="hrOrganization" placeholder="Organization">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 col-12">
+                                            <div class="rnform-group"><input type="phone" id="hrPhone" placeholder="Phone Number (optional)">
+                                            </div>
+                                            <div class="rnform-group">
+                                                <textarea id="hrText" placeholder="How Did You Find Me? (optional)"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <a class="rn-btn" href="#"><span>Download Resume</span></a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <p style="opacity: .4; font-size: 12px; line-height: normal;"><em>Your privacy is important to me. Your information will be used solely for sending the resume and relevant updates.</em></p>
+                        </div>
+                    </div>
+                    <!-- End of .modal-body -->
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Resume area -->
 
         <!-- Back to  top Start -->
         <div class="backto-top">

@@ -14327,7 +14327,7 @@ div#featured-project-carousel {
 }
 
 .modal-body .comment-inner .rnform-group textarea {
-    min-height: 205px;
+    min-height: 130px;
     background-color: #191b1e;
     border-radius: 6px;
     padding: 0;
@@ -14462,9 +14462,13 @@ div#featured-project-carousel {
     background: linear-gradient(145deg, #0044af, #6984f9);
 }
 
+a[data-bs-target="#downloadResume"]{
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .rn-nav-list .nav-item {
-        flex-basis: 33%; 
+        flex-basis: 33%;
     }
 }
 

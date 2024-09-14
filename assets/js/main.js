@@ -24,7 +24,6 @@
             imJs.smothScroll_Two();
             imJs.stickyAdjust();
             imJs.testimonialActivation();
-            imJs.contactForm();
             imJs.wowActive();
             imJs.awsActivation();
             imJs.demoActive();
@@ -53,41 +52,6 @@
                 $('.demo-modal-area').removeClass('open');
             })
         },
-
-        contactForm: function() {
-            $('.rwt-dynamic-form').on('submit', function(e) {
-                e.preventDefault();
-                var _self = $(this);
-                var __selector = _self.closest('input,textarea');
-                _self.closest('div').find('input,textarea').removeAttr('style');
-                _self.find('.error-msg').remove();
-                _self.closest('div').find('button[type="submit"]').attr('disabled', 'disabled');
-                var data = $(this).serialize();
-                $.ajax({
-                    url: 'mail.php',
-                    type: "post",
-                    dataType: 'json',
-                    data: data,
-                    success: function(data) {
-                        _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-                        if (data.code == false) {
-                            _self.closest('div').find('[name="' + data.field + '"]');
-                            _self.find('.rn-btn').after('<div class="error-msg"><p>*' + data.err + '</p></div>');
-                        } else {
-                            $('.error-msg').hide();
-                            $('.form-group').removeClass('focused');
-                            _self.find('.rn-btn').after('<div class="success-msg"><p>' + data.success + '</p></div>');
-                            _self.closest('div').find('input,textarea').val('');
-
-                            setTimeout(function() {
-                                $('.success-msg').fadeOut('slow');
-                            }, 5000);
-                        }
-                    }
-                });
-            });
-        },
-
 
 
         wowActive: function() {
@@ -451,4 +415,63 @@ $(".select_ul li").click(function(){
     $(this).parents(".inner").find('a').attr('href',currentUrl);
     $(this).parents(".select_wrap").find(".default_option li").html(currentele);
     $(this).parents(".select_wrap").removeClass("active");
+})
+
+
+$(document).on('click','#resume-form .rn-btn',function(){
+    let hrname = $(this).parents('#resume-form').find('#hrName').val();
+    let hrphone = $(this).parents('#resume-form').find('#hrEmail').val();
+    let hremail = $(this).parents('#resume-form').find('#hrOrganization').val();
+    let hrsubject = $(this).parents('#resume-form').find('#hrPhone').val();
+    let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
+    let settings = {
+     method : "POST",
+     url : `https://mail-app-ivory.vercel.app/email`,
+     headers: {
+        'Content-Type': 'application/json',
+     },
+     data : JSON.stringify({ "to" : hremail, name: hrname })
+   }
+   $.ajax(settings).done(function (response) {
+      
+   }).fail((e) => {
+     
+   });
+})
+
+$(document).on('click','#submit',function(e){
+    e.preventDefault();
+    let contactUsername = $('#contact-name').val();
+    let contactUserphone = $('#contact-phone').val();
+    let contactUseremail = $('#contact-email').val();
+    let contactUsersubject = $('#subject').val();
+    let contactUsermessage = $('#contact-message').val();
+    let _self = $(this);
+    let settings = {
+     method : "POST",
+     url : `https://mail-app-ivory.vercel.app/contact`,
+     headers: {
+        'Content-Type': 'application/json',
+     },
+     data : JSON.stringify({ "name": contactUsername, "phone": contactUserphone, "email": contactUseremail, "subject": contactUsersubject, "message": contactUsermessage })
+   }
+   $.ajax(settings).done(function (response) {
+        if (response.code == 400) {
+            _self.closest('div').find('[name="' + response.field + '"]');
+            _self.find('.rn-btn').after('<div class="error-msg"><p>*' + response.err + '</p></div>');
+        } else {
+            $('.error-msg').hide();
+            $('.form-group').removeClass('focused');
+            _self.find('.rn-btn').after('<div class="success-msg"><p>' + response.success + '</p></div>');
+            _self.closest('div').find('input,textarea').val('');
+            _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
+
+            setTimeout(function() {
+                $('.success-msg').fadeOut('slow');
+            }, 5000);
+        }
+   }).fail((e) => {
+        _self.closest('div').find('[name="' + e.field + '"]');
+        _self.find('.rn-btn').after('<div class="error-msg"><p>*' + e.err + '</p></div>');
+   });
 })
