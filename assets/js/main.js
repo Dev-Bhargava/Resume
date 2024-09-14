@@ -420,9 +420,9 @@ $(".select_ul li").click(function(){
 
 $(document).on('click','#resume-form .rn-btn',function(){
     let hrname = $(this).parents('#resume-form').find('#hrName').val();
-    let hrphone = $(this).parents('#resume-form').find('#hrEmail').val();
-    let hremail = $(this).parents('#resume-form').find('#hrOrganization').val();
-    let hrsubject = $(this).parents('#resume-form').find('#hrPhone').val();
+    let hrphone = $(this).parents('#resume-form').find('#hrPhone').val();
+    let hremail = $(this).parents('#resume-form').find('#hrEmail').val();
+    let hrorganization = $(this).parents('#resume-form').find('#hrOrganization').val();
     let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
     let settings = {
      method : "POST",
