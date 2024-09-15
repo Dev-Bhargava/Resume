@@ -433,6 +433,7 @@ $(document).on('click','#resume-form .rn-btn',function(){
      data : JSON.stringify({ "to" : hremail, name: hrname })
    }
    $.ajax(settings).done(function (response) {
+        debugger;
         $(this).parents('#downloadResume').find('.close').click();
         $(this).parents('#resume-form').find('#hrName').val('');
         $(this).parents('#resume-form').find('#hrEmail').val('');
