@@ -433,7 +433,12 @@ $(document).on('click','#resume-form .rn-btn',function(){
      data : JSON.stringify({ "to" : hremail, name: hrname })
    }
    $.ajax(settings).done(function (response) {
-      
+        $(this).parents('#downloadResume').find('.close').click();
+        $(this).parents('#resume-form').find('#hrName').val('');
+        $(this).parents('#resume-form').find('#hrEmail').val('');
+        $(this).parents('#resume-form').find('#hrOrganization').val('');
+        $(this).parents('#resume-form').find('#hrPhone').val('');
+        $(this).parents('#resume-form').find('#hrText').val('');
    }).fail((e) => {
      
    });
