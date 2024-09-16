@@ -14472,6 +14472,7 @@ a[data-bs-target="#downloadResume"]{
     display: none;
     font-size: 12px;
     margin-top: 20px;
+    margin-bottom: 0;
 }
 #downloadResume .form-error{
     color: #ff7c7c;
