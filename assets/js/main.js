@@ -469,7 +469,11 @@ $(document).on('click','#resume-form .rn-btn',function(){
                 $('#downloadResume').find('.close').click();  
             }, 2000);
         }).fail((e) => {
-            
+            $('.contact-form-success').hide();
+            self.find('.cta-loader').hide();
+            self.find('.cta-text').show();
+            self.siblings('.form-error').text(e.error);
+            self.siblings('.form-error').show();
         });
     }
 })
