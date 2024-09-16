@@ -460,11 +460,11 @@ $(document).on('click','#resume-form .rn-btn',function(){
            $('#resume-form').find('#hrOrganization').val('');
            $('#resume-form').find('#hrPhone').val('');
            $('#resume-form').find('#hrText').val('');
-           $(this).siblings('.form-success').text(response.message);
-           $(this).siblings('.form-success').show();
+           $('.form-success').text(response.message);
+           $('.form-success').show();
 
            setTimeout(function() {
-                $(this).siblings('.form-success').hide();
+                $('.form-success').hide();
                 $('#downloadResume').find('.close').click();  
             }, 2000);
         }).fail((e) => {
