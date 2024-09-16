@@ -478,18 +478,18 @@ $(document).on('click','#submit',function(e){
     let contactUsermessage = $('#contact-message').val();
     let _self = $(this);
 
-    _self.parents('#contact-form').find('input').css('border-color', '#c4cfde');
+    _self.parents('#contact-form').find('input,textarea').css('border-color', '#c4cfde');
 
     if(contactUsername != '' && contactUseremail != '' && contactUsersubject != '' && contactUsermessage != ''){
         callApi = true;
         _self.siblings('.contact-form-error').hide();
     }else if (contactUsername == '') {
         _self.parents('#contact-form').find('#contact-name').css('border-color', '#ff7c7c');
-        _self.siblings('.contact-form-error').text('Enter your name here:"');
+        _self.siblings('.contact-form-error').text('Enter your name here:');
         _self.siblings('.contact-form-error').show();
     }else if (contactUseremail == '') {
         _self.parents('#contact-form').find('#contact-email').css('border-color', '#ff7c7c');
-        _self.siblings('.contact-form-error').text('Enter your email here:"');
+        _self.siblings('.contact-form-error').text('Enter your email here:');
         _self.siblings('.contact-form-error').show();
     }else if (contactUsersubject == '') {
         _self.parents('#contact-form').find('#subject').css('border-color', '#ff7c7c');
@@ -512,7 +512,6 @@ $(document).on('click','#submit',function(e){
    if(callApi){
        $.ajax(settings).done(function (response) {
             _self.parents('#contact-form').find('input,textarea').val('');
-            _self.parents('#contact-form').find('button[type="submit"]').removeAttr('disabled');
             $('.contact-form-success').text(response.message);
             $('.contact-form-success').show();
             setTimeout(function() {
