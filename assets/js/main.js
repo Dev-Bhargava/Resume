@@ -426,18 +426,18 @@ $(document).on('click','#resume-form .rn-btn',function(){
     let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
     let callApi = false;
 
-    if(hrname != blank || hremail != blank || hrorganization != blank){
+    if(hrname != '' || hremail != '' || hrorganization != ''){
         callApi = true;
         $(this).siblings('.form-error').hide();
-    }else if (hrname == blank) {
+    }else if (hrname == '') {
         $(this).parents('#resume-form').find('#hrName').css('border-color', '#ff7c7c');
         $(this).siblings('.form-error').text('We’d love to know your name!');
         $(this).siblings('.form-error').show();
-    }else if (hremail == blank) {
+    }else if (hremail == '') {
         $(this).parents('#resume-form').find('#hrEmail').css('border-color', '#ff7c7c');
         $(this).siblings('.form-error').text('Enter your email so we can stay in touch.');
         $(this).siblings('.form-error').show();
-    }else if (hrorganization == blank) {
+    }else if (hrorganization == '') {
         $(this).parents('#resume-form').find('#hrOrganization').css('border-color', '#ff7c7c');
         $(this).siblings('.form-error').text('Which organization are you representing?');
         $(this).siblings('.form-error').show();
