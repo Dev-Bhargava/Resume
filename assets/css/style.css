@@ -14483,6 +14483,32 @@ a[data-bs-target="#downloadResume"]{
     color: #27c749;
 }
 
+.cta-loader {
+    display: none;
+    height: 39px;
+    width: 39px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    opacity: 1;
+    margin: 5px auto;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .rn-nav-list .nav-item {
         flex-basis: 33%;

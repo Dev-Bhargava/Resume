@@ -430,6 +430,8 @@ $(document).on('click','#resume-form .rn-btn',function(){
 
     if(hrname != '' && hremail != '' && hrorganization != ''){
         callApi = true;
+        $(this).find('.cta-loader').show();
+        $(this).find('.cta-text').hide();
         $(this).siblings('.form-error').hide();
     }else if (hrname == '') {
         $(this).parents('#resume-form').find('#hrName').css('border-color', '#ff7c7c');
@@ -458,6 +460,8 @@ $(document).on('click','#resume-form .rn-btn',function(){
            $('#resume-form').find('input').val('');
            $('.form-success').text(response.message);
            $('.form-success').show();
+           $(this).find('.cta-loader').hide();
+           $(this).find('.cta-text').show();
 
            setTimeout(function() {
                 $('.form-success').hide();
@@ -482,6 +486,8 @@ $(document).on('click','#submit',function(e){
 
     if(contactUsername != '' && contactUseremail != '' && contactUsersubject != '' && contactUsermessage != ''){
         callApi = true;
+        _self.find('.cta-loader').show();
+        _self.find('.cta-text').hide();
         _self.siblings('.contact-form-error').hide();
     }else if (contactUsername == '') {
         _self.parents('#contact-form').find('#contact-name').css('border-color', '#ff7c7c');
@@ -511,6 +517,8 @@ $(document).on('click','#submit',function(e){
    }
    if(callApi){
        $.ajax(settings).done(function (response) {
+            _self.find('.cta-loader').hide();
+            _self.find('.cta-text').show();
             _self.parents('#contact-form').find('input,textarea').val('');
             $('.contact-form-success').text(response.message);
             $('.contact-form-success').show();
