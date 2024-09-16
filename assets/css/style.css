@@ -14470,7 +14470,7 @@ a[data-bs-target="#downloadResume"]{
 #downloadResume .form-error,
 #downloadResume .form-success {
     display: none;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 20px;
     margin-bottom: 0;
 }
