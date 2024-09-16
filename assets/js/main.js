@@ -438,7 +438,7 @@ $(document).on('click','#resume-form .rn-btn',function(){
     $('#resume-form').find('#hrOrganization').val('');
     $('#resume-form').find('#hrPhone').val('');
     $('#resume-form').find('#hrText').val('');
-    $('#downloadResume').find('.close').click();
+    $('#downloadResume').find('.close').click(); 
    }).fail((e) => {
      
    });
