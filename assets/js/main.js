@@ -455,11 +455,7 @@ $(document).on('click','#resume-form .rn-btn',function(){
    }
    if(callApi){
        $.ajax(settings).done(function (response) {
-           $('#resume-form').find('#hrName').val('');
-           $('#resume-form').find('#hrEmail').val('');
-           $('#resume-form').find('#hrOrganization').val('');
-           $('#resume-form').find('#hrPhone').val('');
-           $('#resume-form').find('#hrText').val('');
+           $('#resume-form').find('input').val('');
            $('.form-success').text(response.message);
            $('.form-success').show();
 
@@ -481,6 +477,30 @@ $(document).on('click','#submit',function(e){
     let contactUsersubject = $('#subject').val();
     let contactUsermessage = $('#contact-message').val();
     let _self = $(this);
+
+    _self.parents('#contact-form').find('input').css('border-color', '#c4cfde');
+
+    if(contactUsername != '' && contactUseremail != '' && contactUsersubject != '' && contactUsermessage != ''){
+        callApi = true;
+        _self.siblings('.contact-form-error').hide();
+    }else if (contactUsername == '') {
+        _self.parents('#contact-form').find('#contact-name').css('border-color', '#ff7c7c');
+        _self.siblings('.contact-form-error').text('Enter your name here:"');
+        _self.siblings('.contact-form-error').show();
+    }else if (contactUseremail == '') {
+        _self.parents('#contact-form').find('#contact-email').css('border-color', '#ff7c7c');
+        _self.siblings('.contact-form-error').text('Enter your email here:"');
+        _self.siblings('.contact-form-error').show();
+    }else if (contactUsersubject == '') {
+        _self.parents('#contact-form').find('#subject').css('border-color', '#ff7c7c');
+        _self.siblings('.contact-form-error').text('What would you like to talk about?');
+        _self.siblings('.contact-form-error').show();
+    }else if (contactUsermessage == '') {
+        _self.parents('#contact-form').find('#contact-message').css('border-color', '#ff7c7c');
+        _self.siblings('.contact-form-error').text('What’s on your mind? Write your message here.');
+        _self.siblings('.contact-form-error').show();
+    }
+
     let settings = {
      method : "POST",
      url : `https://mail-app-ivory.vercel.app/contact`,
@@ -489,23 +509,18 @@ $(document).on('click','#submit',function(e){
      },
      data : JSON.stringify({ "name": contactUsername, "phone": contactUserphone, "email": contactUseremail, "subject": contactUsersubject, "message": contactUsermessage })
    }
-   $.ajax(settings).done(function (response) {
-        if (response.code == 400) {
-            _self.closest('div').find('[name="' + response.field + '"]');
-            _self.find('.rn-btn').after('<div class="error-msg"><p>*' + response.err + '</p></div>');
-        } else {
-            $('.error-msg').hide();
-            $('.form-group').removeClass('focused');
-            _self.find('.rn-btn').after('<div class="success-msg"><p>' + response.success + '</p></div>');
-            _self.closest('div').find('input,textarea').val('');
-            _self.closest('div').find('button[type="submit"]').removeAttr('disabled');
-
+   if(callApi){
+       $.ajax(settings).done(function (response) {
+            _self.parents('#contact-form').find('input,textarea').val('');
+            _self.parents('#contact-form').find('button[type="submit"]').removeAttr('disabled');
+            $('.contact-form-success').text(response.message);
+            $('.contact-form-success').show();
             setTimeout(function() {
-                $('.success-msg').fadeOut('slow');
+                $('.contact-form-success').hide();
             }, 5000);
-        }
-   }).fail((e) => {
-        _self.closest('div').find('[name="' + e.field + '"]');
-        _self.find('.rn-btn').after('<div class="error-msg"><p>*' + e.err + '</p></div>');
-   });
+        }).fail((e) => {
+            $('.contact-form-success').hide();
+            _self.siblings('.contact-form-error').text(e.error);
+        });
+    }
 })

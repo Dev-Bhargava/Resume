@@ -14468,16 +14468,18 @@ a[data-bs-target="#downloadResume"]{
 }
 
 #downloadResume .form-error,
-#downloadResume .form-success {
+#downloadResume .form-success,
+.contact-form-error,
+.contact-form-success {
     display: none;
     font-size: 14px;
     margin-top: 20px;
     margin-bottom: 0;
 }
-#downloadResume .form-error{
+#downloadResume .form-error, .contact-form-error{
     color: #ff7c7c;
 }
-#downloadResume .form-success{
+#downloadResume .form-success, .contact-form-success{
     color: #27c749;
 }
 
