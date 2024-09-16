@@ -14485,8 +14485,8 @@ a[data-bs-target="#downloadResume"]{
 
 .cta-loader {
     display: none;
-    height: 39px;
-    width: 39px;
+    height: 41px;
+    width: 41px;
     border: 2px solid transparent;
     border-radius: 50%;
     border-top: 2px solid currentColor;
@@ -14497,6 +14497,19 @@ a[data-bs-target="#downloadResume"]{
     animation-duration: 1000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+#submit.rn-btn,
+#resume-form a.rn-btn {
+    padding: 0;
+}
+
+#resume-form a.rn-btn {
+    min-width: 200px;
+}
+
+.cta-text {
+    padding: 15px 35px;
 }
 
 @keyframes spin {
