@@ -460,7 +460,7 @@ $(document).on('click','#resume-form .rn-btn',function(){
            $('#resume-form').find('#hrOrganization').val('');
            $('#resume-form').find('#hrPhone').val('');
            $('#resume-form').find('#hrText').val('');
-           $(this).siblings('.form-success').text(response);
+           $(this).siblings('.form-success').text(response.message);
            $(this).siblings('.form-success').show();
 
            setTimeout(function() {
