@@ -10594,6 +10594,7 @@ body.template-color-1 {
 .header-wrapper {
     height: 122px;
     padding: 0 64px;
+    width: 100%;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -14464,6 +14465,19 @@ div#featured-project-carousel {
 
 a[data-bs-target="#downloadResume"]{
     cursor: pointer;
+}
+
+#downloadResume .form-error,
+#downloadResume .form-success {
+    display: none;
+    font-size: 12px;
+    margin-top: 20px;
+}
+#downloadResume .form-error{
+    color: #ff7c7c;
+}
+#downloadResume .form-success{
+    color: #27c749;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

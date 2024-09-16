@@ -424,24 +424,51 @@ $(document).on('click','#resume-form .rn-btn',function(){
     let hremail = $(this).parents('#resume-form').find('#hrEmail').val();
     let hrorganization = $(this).parents('#resume-form').find('#hrOrganization').val();
     let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
+    let callApi = false;
+
+    if(hrname != blank || hremail != blank || hrorganization != blank){
+        callApi = true;
+        $(this).siblings('.form-error').hide();
+    }else if (hrname == blank) {
+        $(this).parents('#resume-form').find('#hrName').css('border-color', '#ff7c7c');
+        $(this).siblings('.form-error').text('We’d love to know your name!');
+        $(this).siblings('.form-error').show();
+    }else if (hremail == blank) {
+        $(this).parents('#resume-form').find('#hrEmail').css('border-color', '#ff7c7c');
+        $(this).siblings('.form-error').text('Enter your email so we can stay in touch.');
+        $(this).siblings('.form-error').show();
+    }else if (hrorganization == blank) {
+        $(this).parents('#resume-form').find('#hrOrganization').css('border-color', '#ff7c7c');
+        $(this).siblings('.form-error').text('Which organization are you representing?');
+        $(this).siblings('.form-error').show();
+    }
+
     let settings = {
      method : "POST",
      url : `https://mail-app-ivory.vercel.app/email`,
      headers: {
         'Content-Type': 'application/json',
      },
-     data : JSON.stringify({ "to" : hremail, name: hrname })
+     data : JSON.stringify({ "to" : hremail, "name": hrname, "organization": hrorganization, "phone": hrphone, "message": hrmessage })
    }
-   $.ajax(settings).done(function (response) {
-    $('#resume-form').find('#hrName').val('');
-    $('#resume-form').find('#hrEmail').val('');
-    $('#resume-form').find('#hrOrganization').val('');
-    $('#resume-form').find('#hrPhone').val('');
-    $('#resume-form').find('#hrText').val('');
-    $('#downloadResume').find('.close').click(); 
-   }).fail((e) => {
-     
-   });
+   if(callApi){
+       $.ajax(settings).done(function (response) {
+           $('#resume-form').find('#hrName').val('');
+           $('#resume-form').find('#hrEmail').val('');
+           $('#resume-form').find('#hrOrganization').val('');
+           $('#resume-form').find('#hrPhone').val('');
+           $('#resume-form').find('#hrText').val('');
+           $(this).siblings('.form-success').text(response);
+           $(this).siblings('.form-success').show();
+
+           setTimeout(function() {
+                $(this).siblings('.form-success').hide();
+                $('#downloadResume').find('.close').click();  
+            }, 2000);
+        }).fail((e) => {
+            
+        });
+    }
 })
 
 $(document).on('click','#submit',function(e){
