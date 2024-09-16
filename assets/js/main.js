@@ -426,7 +426,7 @@ $(document).on('click','#resume-form .rn-btn',function(){
     let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
     let callApi = false;
 
-    if(hrname != '' || hremail != '' || hrorganization != ''){
+    if(hrname != '' && hremail != '' && hrorganization != ''){
         callApi = true;
         $(this).siblings('.form-error').hide();
     }else if (hrname == '') {
