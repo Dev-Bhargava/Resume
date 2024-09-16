@@ -419,32 +419,33 @@ $(".select_ul li").click(function(){
 
 
 $(document).on('click','#resume-form .rn-btn',function(){
-    let hrname = $(this).parents('#resume-form').find('#hrName').val();
-    let hrphone = $(this).parents('#resume-form').find('#hrPhone').val();
-    let hremail = $(this).parents('#resume-form').find('#hrEmail').val();
-    let hrorganization = $(this).parents('#resume-form').find('#hrOrganization').val();
-    let hrmessage = $(this).parents('#resume-form').find('#hrText').val();
+    let self = $(this);
+    let hrname = self.parents('#resume-form').find('#hrName').val();
+    let hrphone = self.parents('#resume-form').find('#hrPhone').val();
+    let hremail = self.parents('#resume-form').find('#hrEmail').val();
+    let hrorganization = self.parents('#resume-form').find('#hrOrganization').val();
+    let hrmessage = self.parents('#resume-form').find('#hrText').val();
     let callApi = false;
 
-    $(this).parents('#resume-form').find('input').css('border-color', '#c4cfde');
+    self.parents('#resume-form').find('input').css('border-color', '#c4cfde');
 
     if(hrname != '' && hremail != '' && hrorganization != ''){
         callApi = true;
-        $(this).find('.cta-loader').show();
-        $(this).find('.cta-text').hide();
-        $(this).siblings('.form-error').hide();
+        self.find('.cta-loader').show();
+        self.find('.cta-text').hide();
+        self.siblings('.form-error').hide();
     }else if (hrname == '') {
-        $(this).parents('#resume-form').find('#hrName').css('border-color', '#ff7c7c');
-        $(this).siblings('.form-error').text('We’d love to know your name!');
-        $(this).siblings('.form-error').show();
+        self.parents('#resume-form').find('#hrName').css('border-color', '#ff7c7c');
+        self.siblings('.form-error').text('We’d love to know your name!');
+        self.siblings('.form-error').show();
     }else if (hremail == '') {
-        $(this).parents('#resume-form').find('#hrEmail').css('border-color', '#ff7c7c');
-        $(this).siblings('.form-error').text('Enter your email so we can stay in touch.');
-        $(this).siblings('.form-error').show();
+        self.parents('#resume-form').find('#hrEmail').css('border-color', '#ff7c7c');
+        self.siblings('.form-error').text('Enter your email so we can stay in touch.');
+        self.siblings('.form-error').show();
     }else if (hrorganization == '') {
-        $(this).parents('#resume-form').find('#hrOrganization').css('border-color', '#ff7c7c');
-        $(this).siblings('.form-error').text('Which organization are you representing?');
-        $(this).siblings('.form-error').show();
+        self.parents('#resume-form').find('#hrOrganization').css('border-color', '#ff7c7c');
+        self.siblings('.form-error').text('Which organization are you representing?');
+        self.siblings('.form-error').show();
     }
 
     let settings = {
@@ -460,8 +461,8 @@ $(document).on('click','#resume-form .rn-btn',function(){
            $('#resume-form').find('input').val('');
            $('.form-success').text(response.message);
            $('.form-success').show();
-           $(this).find('.cta-loader').hide();
-           $(this).find('.cta-text').show();
+           self.find('.cta-loader').hide();
+           self.find('.cta-text').show();
 
            setTimeout(function() {
                 $('.form-success').hide();
