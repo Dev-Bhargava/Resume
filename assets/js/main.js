@@ -409,6 +409,12 @@ $(".default_option").not(".active").click(function() {
     $(this).parent().toggleClass("active");
 })
 
+$(".nav-link.skills").click(function(e){
+    e.preventDefault();
+    var tabTrigger = new bootstrap.Tab($('#professional-tab')[0]);
+    tabTrigger.show();
+})
+
 $(".select_ul li").click(function(){
     var currentele = $(this).html();
     let currentUrl = $(this).find('p').data('value');
