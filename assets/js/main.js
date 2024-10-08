@@ -493,7 +493,7 @@ $(document).on('click','#submit',function(e){
     let contactUsermessage = $('#contact-message').val();
     let _self = $(this);
 
-    _self.parents('#contact-form').find('input,textarea').css('border-color', '#c4cfde');
+    _self.parents('#contact-form').find('input, textarea').css('border-color', '#c4cfde');
 
     if(contactUsername != '' && contactUseremail != '' && contactUsersubject != '' && contactUsermessage != ''){
         callApi = true;
@@ -530,7 +530,7 @@ $(document).on('click','#submit',function(e){
        $.ajax(settings).done(function (response) {
             _self.find('.cta-loader').hide();
             _self.find('.cta-text').show();
-            _self.parents('#contact-form').find('input,textarea').val('');
+            _self.parents('#contact-form').find('input, textarea').val('');
             $('.contact-form-success').text(response.message);
             $('.contact-form-success').show();
             setTimeout(function() {
