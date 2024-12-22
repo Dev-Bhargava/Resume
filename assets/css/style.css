@@ -12506,7 +12506,7 @@ figcaption {
 }
 
 .slide .content .inner {
-    margin-bottom: 75px;
+    margin-bottom: 25px;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -12570,7 +12570,7 @@ figcaption {
 
 @media only screen and (max-width: 479px) {
     .slide .content .inner .title {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 40px;
     }
 }
@@ -12812,7 +12812,7 @@ figcaption {
 .slide .thumbnail .inner img {
     border: 0;
     vertical-align: middle;
-    max-width: 100%;
+    max-width: 72%;
     height: auto;
 }
 
