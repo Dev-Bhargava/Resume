@@ -4,29 +4,33 @@
   <title>ProDI Embed Test</title>
   <style>
     body { margin: 0; font-family: sans-serif; }
-    #url-bar {
+    #log {
       padding: 12px 16px;
-      background: #1e293b;
-      color: #94a3b8;
-      font-size: 13px;
-      font-family: monospace;
+      background: #0f172a;
+      color: #cbd5e1;
+      font: 12px/1.5 monospace;
+      white-space: pre-wrap;
     }
-    #url-bar span { color: #38bdf8; }
     iframe {
       width: 100%;
-      height: calc(100vh - 48px);
+      height: calc(100vh - 160px);
       border: none;
       display: block;
     }
   </style>
 </head>
 <body>
+  <div id="log"></div>
+
   <iframe
     id="prodi-embed"
     src="https://idpbind-stage.vercel.app"
   ></iframe>
 
   <script>
+    const logEl = document.getElementById("log");
+    const iframe = document.getElementById("prodi-embed");
+
     const allowedOrigins = [
       "http://localhost:3000",
       "http://localhost:3001",
@@ -34,20 +38,39 @@
       "https://idpbind-stage.vercel.app"
     ];
 
+    function log(...args) {
+      const line = args.map(v =>
+        typeof v === "string" ? v : JSON.stringify(v, null, 2)
+      ).join(" ");
+      console.log(...args);
+      logEl.textContent += line + "\n";
+    }
+
+    iframe.addEventListener("load", () => {
+      log("[iframe] loaded:", iframe.src);
+    });
+
     window.addEventListener("message", function (event) {
-      if (!allowedOrigins.includes(event.origin)) return;
+      log("[message] origin:", event.origin);
+      log("[message] data:", event.data);
+
+      if (!allowedOrigins.includes(event.origin)) {
+        log("[message] blocked: origin not allowed");
+        return;
+      }
 
       const data = event.data;
-      if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
+      if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") {
+        log("[message] ignored: wrong type");
+        return;
+      }
 
       const route = typeof data.route === "string" ? data.route : "/";
       const parentPath = `/prodi-db-stage${route}`;
 
-      window.history.pushState(
-        { prodiRoute: route },
-        "",
-        parentPath
-      );
+      window.history.pushState({ prodiRoute: route }, "", parentPath);
+
+      log("[pushState] updated url:", window.location.href);
     });
   </script>
 </body>
