@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ProDI Embed Test</title>
+  <title>ProDI Embed</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      height: 100%;
+      overflow: hidden;
       font-family: sans-serif;
     }
 
@@ -17,27 +19,30 @@
   </style>
 </head>
 <body>
-  <iframe
-    id="prodi-embed"
-    src="https://idpbind-stage.vercel.app"
-  ></iframe>
+  <iframe id="prodi-embed"></iframe>
 
   <script>
     const iframe = document.getElementById("prodi-embed");
-    const iframeUrl = new URL(iframe.getAttribute("src"), window.location.href);
-    const iframeOrigin = iframeUrl.origin;
+    const APP_ORIGIN = "https://idpbind-stage.vercel.app";
+    const BASE_PATH = "/prodi-db-stage";
 
-    function getInitialBasePath() {
-      const currentPath = window.location.pathname;
+    function getChildRouteFromParentUrl() {
+      const path = window.location.pathname;
 
-      // If this HTML file lives at /prodi-db-stage/embed.html
-      // -> base path should be /prodi-db-stage
-      const withoutFile = currentPath.replace(/\/[^/]*\.[^/]+$/, "");
+      if (!path.startsWith(BASE_PATH)) {
+        return "/";
+      }
 
-      return withoutFile === "/" ? "" : withoutFile.replace(/\/+$/, "");
+      const childRoute = path.slice(BASE_PATH.length) || "/";
+      return childRoute.startsWith("/") ? childRoute : `/${childRoute}`;
     }
 
-    const parentBasePath = getInitialBasePath();
+    function setIframeSrcFromParentUrl() {
+      const childRoute = getChildRouteFromParentUrl();
+      iframe.src = `${APP_ORIGIN}${childRoute}`;
+    }
+
+    const iframeOrigin = new URL(APP_ORIGIN).origin;
 
     window.addEventListener("message", function (event) {
       if (event.origin !== iframeOrigin) return;
@@ -47,16 +52,18 @@
 
       const route = typeof data.route === "string" ? data.route : "/";
       const normalizedRoute = route.startsWith("/") ? route : `/${route}`;
-      const nextPath = `${parentBasePath}${normalizedRoute}`;
+      const nextPath = `${BASE_PATH}${normalizedRoute}`;
 
-      if (window.location.pathname === nextPath) return;
-
-      window.history.pushState(
-        { prodiRoute: normalizedRoute },
-        "",
-        nextPath
-      );
+      if (window.location.pathname !== nextPath) {
+        window.history.pushState({ prodiRoute: normalizedRoute }, "", nextPath);
+      }
     });
+
+    window.addEventListener("popstate", function () {
+      setIframeSrcFromParentUrl();
+    });
+
+    setIframeSrcFromParentUrl();
   </script>
 </body>
 </html>
