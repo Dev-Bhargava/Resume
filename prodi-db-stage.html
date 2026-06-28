@@ -21,18 +21,12 @@
   </style>
 </head>
 <body>
-  <div id="url-bar">
-    Parent URL: <span id="url-display">/</span>
-  </div>
-
   <iframe
     id="prodi-embed"
     src="http://localhost:3000"
   ></iframe>
 
   <script>
-    const urlDisplay = document.getElementById("url-display");
-
     const allowedOrigins = [
       "http://localhost:3000",
       "http://localhost:3001",
