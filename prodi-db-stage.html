@@ -40,13 +40,6 @@
       "https://idpbind-stage.vercel.app"
     ];
 
-    function updateDisplayedUrl() {
-      urlDisplay.textContent =
-        window.location.pathname + window.location.search + window.location.hash;
-    }
-
-    updateDisplayedUrl();
-
     window.addEventListener("message", function (event) {
       if (!allowedOrigins.includes(event.origin)) return;
 
@@ -61,15 +54,6 @@
         "",
         parentPath
       );
-
-      updateDisplayedUrl();
-
-      console.log("[parent] route changed to:", route);
-      console.log("[parent] browser url is now:", window.location.href);
-    });
-
-    window.addEventListener("popstate", function () {
-      updateDisplayedUrl();
     });
   </script>
 </body>
