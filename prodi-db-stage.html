@@ -12,11 +12,15 @@
       font-family: monospace;
     }
     #url-bar span { color: #38bdf8; }
-    iframe { width: 100%; height: calc(100vh - 48px); border: none; display: block; }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 48px);
+      border: none;
+      display: block;
+    }
   </style>
 </head>
 <body>
-
   <div id="url-bar">
     Parent URL: <span id="url-display">/</span>
   </div>
@@ -27,29 +31,46 @@
   ></iframe>
 
   <script>
-    const iframe = document.getElementById("prodi-embed");
     const urlDisplay = document.getElementById("url-display");
 
-    // Accept messages from localhost during local testing
-    window.addEventListener("message", function (event) {
-      // Allow localhost and file:// during dev
-      const allowedOrigins = [
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3000",
-        "https://idpbind-stage.vercel.app/",
-      ];
+    const allowedOrigins = [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "http://127.0.0.1:3000",
+      "https://idpbind-stage.vercel.app"
+    ];
 
+    function updateDisplayedUrl() {
+      urlDisplay.textContent =
+        window.location.pathname + window.location.search + window.location.hash;
+    }
+
+    updateDisplayedUrl();
+
+    window.addEventListener("message", function (event) {
       if (!allowedOrigins.includes(event.origin)) return;
 
       const data = event.data;
       if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
 
-      // Update displayed URL — simulates parent pushState
-      urlDisplay.textContent = data.route;
-      console.log("[parent] route changed to:", data.route);
+      const route = typeof data.route === "string" ? data.route : "/";
+      const parentPath = `/prodi-db-stage${route}`;
+
+      window.history.pushState(
+        { prodiRoute: route },
+        "",
+        parentPath
+      );
+
+      updateDisplayedUrl();
+
+      console.log("[parent] route changed to:", route);
+      console.log("[parent] browser url is now:", window.location.href);
+    });
+
+    window.addEventListener("popstate", function () {
+      updateDisplayedUrl();
     });
   </script>
-
 </body>
 </html>
