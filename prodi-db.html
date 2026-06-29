@@ -1,77 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>NIT Prodi-DB | Home</title>
-    <style>
-        html,
-        body {
-          margin: 0;
-          height: 100%;
-          overflow: hidden;
-        }
-    
-        iframe {
-          display: block;
-          width: 100%;
-          height: 100vh;
-          border: none;
-        }
-      </style>
-  </head>
-  <body>
-    <iframe
-      id="prodi-embed"
-      src="https://prodi-db.vercel.app"
-    ></iframe>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ProDI Embed</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
 
-    <script>
-      const iframe = document.getElementById("prodi-embed");
-      const urlDisplay = document.getElementById("url-display");
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="prodi-embed"></iframe>
 
-      const iframeUrl = new URL(iframe.src, window.location.href);
-      const iframeOrigin = iframeUrl.origin;
+  <script>
+    const APP_ORIGIN = "https://prodi-db.vercel.app";
+    const iframe = document.getElementById("prodi-embed");
+    const iframeOrigin = new URL(APP_ORIGIN).origin;
 
-      function updateDisplayedUrl() {
-        urlDisplay.textContent =
-          window.location.pathname +
-          window.location.search +
-          window.location.hash;
+    function normalizeRoute(route) {
+      if (!route) return "/";
+      return route.startsWith("/") ? route : `/${route}`;
+    }
+
+    function getRouteFromHash() {
+      const hash = window.location.hash || "";
+      const raw = hash.startsWith("?pid") ? hash.slice(1) : hash;
+      return normalizeRoute(raw || "/");
+    }
+
+    function setIframeFromHash() {
+      const route = getRouteFromHash();
+      const nextSrc = APP_ORIGIN + route;
+
+      if (iframe.getAttribute("src") !== nextSrc) {
+        iframe.setAttribute("src", nextSrc);
       }
+    }
 
-      updateDisplayedUrl();
+    window.addEventListener("message", function (event) {
+      if (event.origin !== iframeOrigin) return;
 
-      window.addEventListener("message", function (event) {
-        if (event.origin !== iframeOrigin) return;
+      const data = event.data;
+      if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
 
-        const data = event.data;
-        if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
+      const route = normalizeRoute(data.route || "/");
+      const nextHash = `#${route}`;
 
-        const route = typeof data.route === "string" ? data.route : "/";
-        const parentPath = `/prodi-db-stage${route}`;
+      if (window.location.hash !== nextHash) {
+        window.history.pushState({ prodiRoute: route }, "", nextHash);
+      }
+    });
 
-        window.history.pushState({ prodiRoute: route }, "", parentPath);
-        updateDisplayedUrl();
-      });
+    window.addEventListener("popstate", function () {
+      setIframeFromHash();
+    });
 
-      window.addEventListener("popstate", function () {
-        updateDisplayedUrl();
+    window.addEventListener("hashchange", function () {
+      setIframeFromHash();
+    });
 
-        const currentPath = window.location.pathname;
-        const basePrefix = "/prodi-db-stage";
-        const route = currentPath.startsWith(basePrefix)
-          ? currentPath.slice(basePrefix.length) || "/"
-          : "/";
-
-        if (iframe.contentWindow) {
-          iframe.contentWindow.postMessage(
-            {
-              type: "PRODI_EMBED_NAVIGATE",
-              route,
-            },
-            iframeOrigin
-          );
-        }
-      });
-    </script>
-  </body>
+    setIframeFromHash();
+  </script>
+</body>
 </html>
