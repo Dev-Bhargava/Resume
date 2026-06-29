@@ -10,7 +10,6 @@
       height: 100%;
       overflow: hidden;
       font-family: Arial, sans-serif;
-      background: #fff;
     }
 
     iframe {
@@ -26,37 +25,26 @@
 
   <script>
     const APP_ORIGIN = "https://idpbind-stage.vercel.app";
-    const BASE_PATH = "/prodi-db-stage";
-
     const iframe = document.getElementById("prodi-embed");
     const iframeOrigin = new URL(APP_ORIGIN).origin;
 
-    function getChildRouteFromParentPath() {
-      const path = window.location.pathname;
-
-      if (!path.startsWith(BASE_PATH)) {
-        return "/";
-      }
-
-      let childRoute = path.slice(BASE_PATH.length) || "/";
-
-      if (!childRoute.startsWith("/")) {
-        childRoute = "/" + childRoute;
-      }
-
-      return childRoute;
+    function normalizeRoute(route) {
+      if (!route) return "/";
+      return route.startsWith("/") ? route : `/${route}`;
     }
 
-    function buildIframeSrc() {
-      const childRoute = getChildRouteFromParentPath();
-      return APP_ORIGIN + childRoute;
+    function getRouteFromHash() {
+      const hash = window.location.hash || "";
+      const raw = hash.startsWith("#") ? hash.slice(1) : hash;
+      return normalizeRoute(raw || "/");
     }
 
-    function syncIframeToParentUrl() {
-      const nextSrc = buildIframeSrc();
+    function setIframeFromHash() {
+      const route = getRouteFromHash();
+      const nextSrc = APP_ORIGIN + route;
 
-      if (iframe.src !== nextSrc) {
-        iframe.src = nextSrc;
+      if (iframe.getAttribute("src") !== nextSrc) {
+        iframe.setAttribute("src", nextSrc);
       }
     }
 
@@ -66,20 +54,23 @@
       const data = event.data;
       if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
 
-      const route = typeof data.route === "string" ? data.route : "/";
-      const normalizedRoute = route.startsWith("/") ? route : `/${route}`;
-      const nextPath = `${BASE_PATH}${normalizedRoute}`;
+      const route = normalizeRoute(data.route || "/");
+      const nextHash = `#${route}`;
 
-      if (window.location.pathname !== nextPath) {
-        window.history.pushState({ prodiRoute: normalizedRoute }, "", nextPath);
+      if (window.location.hash !== nextHash) {
+        window.history.pushState({ prodiRoute: route }, "", nextHash);
       }
     });
 
     window.addEventListener("popstate", function () {
-      syncIframeToParentUrl();
+      setIframeFromHash();
     });
 
-    syncIframeToParentUrl();
+    window.addEventListener("hashchange", function () {
+      setIframeFromHash();
+    });
+
+    setIframeFromHash();
   </script>
 </body>
 </html>
