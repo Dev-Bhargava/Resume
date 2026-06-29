@@ -3,100 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ProDI Embed</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-        font-family: Arial, sans-serif;
-      }
-
-      iframe {
-        display: block;
-        width: 100%;
-        height: 100vh;
-        border: 0;
-      }
-    </style>
+    <title>NIT Prodi_DB | Home</title>
   </head>
   <body>
-    <iframe id="prodi-embed"></iframe>
-
-    <script>
-      const APP_ORIGIN = "https://prodi-db.vercel.app";
-      const iframe = document.getElementById("prodi-embed");
-      const iframeOrigin = new URL(APP_ORIGIN).origin;
-
-      function normalizeProteinId(value) {
-        return String(value || "").trim();
-      }
-
-      function getProteinFromQuery() {
-        const url = new URL(window.location.href);
-        return normalizeProteinId(url.searchParams.get("protein"));
-      }
-
-      function buildIframeSrc() {
-        const proteinId = getProteinFromQuery();
-
-        if (!proteinId) {
-          return APP_ORIGIN;
-        }
-
-        return `${APP_ORIGIN}/protein/${encodeURIComponent(proteinId)}`;
-      }
-
-      function syncIframeFromQuery() {
-        const nextSrc = buildIframeSrc();
-
-        if (iframe.getAttribute("src") !== nextSrc) {
-          iframe.setAttribute("src", nextSrc);
-        }
-      }
-
-      function setProteinInQuery(proteinId) {
-        const url = new URL(window.location.href);
-        const normalized = normalizeProteinId(proteinId);
-
-        if (normalized) {
-          url.searchParams.set("protein", normalized);
-        } else {
-          url.searchParams.delete("protein");
-        }
-
-        window.history.pushState({}, "", url.toString());
-      }
-
-      window.addEventListener("message", function (event) {
-        if (event.origin !== iframeOrigin) return;
-
-        const data = event.data;
-        if (!data || data.type !== "PRODI_EMBED_ROUTE_CHANGE") return;
-
-        const route = typeof data.route === "string" ? data.route : "/";
-        const match = route.match(/^\/protein\/([^/?#]+)/);
-
-        if (match) {
-          const proteinId = decodeURIComponent(match[1]);
-          const currentProtein = getProteinFromQuery();
-
-          if (currentProtein !== proteinId) {
-            setProteinInQuery(proteinId);
-          }
-        } else {
-          if (getProteinFromQuery()) {
-            setProteinInQuery("");
-          }
-        }
-      });
-
-      window.addEventListener("popstate", function () {
-        syncIframeFromQuery();
-      });
-
-      syncIframeFromQuery();
-    </script>
+    <script
+      src="https://erayush.com/assets/js/vendor/prodi-embed.js"
+      defer
+    ></script>
   </body>
 </html>
