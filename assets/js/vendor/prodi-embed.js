@@ -1,5 +1,5 @@
 (function () {
-  const APP_ORIGIN = "https://prod-db.vercel.app";
+  const APP_ORIGIN = "https://prodi-db.vercel.app";
   const IFRAME_ID = "prodi-embed";
   const iframeOrigin = new URL(APP_ORIGIN).origin;
 
