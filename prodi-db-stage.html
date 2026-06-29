@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ProDI Embed</title>
   <style>
     html, body {
       margin: 0;
       height: 100%;
       overflow: hidden;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      background: #fff;
     }
 
     iframe {
+      display: block;
       width: 100%;
       height: 100vh;
-      border: none;
-      display: block;
+      border: 0;
     }
   </style>
 </head>
@@ -22,27 +25,40 @@
   <iframe id="prodi-embed"></iframe>
 
   <script>
-    const iframe = document.getElementById("prodi-embed");
     const APP_ORIGIN = "https://idpbind-stage.vercel.app";
     const BASE_PATH = "/prodi-db-stage";
 
-    function getChildRouteFromParentUrl() {
+    const iframe = document.getElementById("prodi-embed");
+    const iframeOrigin = new URL(APP_ORIGIN).origin;
+
+    function getChildRouteFromParentPath() {
       const path = window.location.pathname;
 
       if (!path.startsWith(BASE_PATH)) {
         return "/";
       }
 
-      const childRoute = path.slice(BASE_PATH.length) || "/";
-      return childRoute.startsWith("/") ? childRoute : `/${childRoute}`;
+      let childRoute = path.slice(BASE_PATH.length) || "/";
+
+      if (!childRoute.startsWith("/")) {
+        childRoute = "/" + childRoute;
+      }
+
+      return childRoute;
     }
 
-    function setIframeSrcFromParentUrl() {
-      const childRoute = getChildRouteFromParentUrl();
-      iframe.src = `${APP_ORIGIN}${childRoute}`;
+    function buildIframeSrc() {
+      const childRoute = getChildRouteFromParentPath();
+      return APP_ORIGIN + childRoute;
     }
 
-    const iframeOrigin = new URL(APP_ORIGIN).origin;
+    function syncIframeToParentUrl() {
+      const nextSrc = buildIframeSrc();
+
+      if (iframe.src !== nextSrc) {
+        iframe.src = nextSrc;
+      }
+    }
 
     window.addEventListener("message", function (event) {
       if (event.origin !== iframeOrigin) return;
@@ -60,10 +76,10 @@
     });
 
     window.addEventListener("popstate", function () {
-      setIframeSrcFromParentUrl();
+      syncIframeToParentUrl();
     });
 
-    setIframeSrcFromParentUrl();
+    syncIframeToParentUrl();
   </script>
 </body>
 </html>
